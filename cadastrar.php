@@ -1,14 +1,18 @@
 <?php
+session_start();
+
 require 'Usuario.class.php';
 $usuario = new Usuario();
 
 if (isset($_POST['nome'])) {
-    $nome  = $_POST['nome'];
-    $email  = $_POST['email'];
-    $senha  = $_POST['senha'];
+    //evita injection codigo malicioso digitado pelo usuario
+    $nome   = addslaches($_POST['nome']);
+    $email  = addslashes($_POST['email']);
+    $senha  = addslashes($_POST['senha']);
 
-    $conn = $usuario->conexao();
-    if ($conn) {
+    $conn = $usuario->conecta();
+
+    if($conn){
         $user = $usuario->checkUser($email);
         if (!$user) {
             $user = $usuario->inserirUsuario($nome, $email, $senha);
