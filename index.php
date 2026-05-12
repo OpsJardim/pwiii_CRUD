@@ -10,8 +10,10 @@
         <form  method = "POST" action="login.php">
             <input type="text" placeholder = "Digite o email" name = "email"><p>
             <input type="password" placeholder = "Digite a senha" name = "senha"><p>
-            <input type="submit" value = "Cadastrar">
+            <input type="submit" value = "Enviar">
         </form>
+
+        <a href="../html/cadastrarUsuario.html">Não tem cadastro? Clique aqui!</a>
         
         <?php        
     } else{

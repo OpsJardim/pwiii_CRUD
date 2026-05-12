@@ -60,9 +60,10 @@
                 return $stmt->rowCount() > 0;
             }
 
-            public function listarUsuario(){
+            public function listarUsuarios(){
                 $sql = "SELECT * FROM usuario";
-                $stmt = $this->pdo->prepare(|$sql);
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute();
 
                 return $stmt->fetchAll();
             }

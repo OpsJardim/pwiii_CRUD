@@ -6,7 +6,7 @@ $usuario = new Usuario();
 
 if (isset($_POST['nome'])) {
     //evita injection codigo malicioso digitado pelo usuario
-    $nome   = addslaches($_POST['nome']);
+    $nome   = addslashes($_POST['nome']);
     $email  = addslashes($_POST['email']);
     $senha  = addslashes($_POST['senha']);
 
@@ -16,6 +16,7 @@ if (isset($_POST['nome'])) {
         $user = $usuario->checkUser($email);
         if (!$user) {
             $user = $usuario->inserirUsuario($nome, $email, $senha);
+            echo "Usuário cadastrado com sucesso.";
         }else{
             echo "Usuário já cadastrado. Vá para login.";
             exit();
